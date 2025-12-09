@@ -77,3 +77,16 @@ export const getUsers=async (req,res) => {
     }
     
 }
+
+// get current logged-in user info from token
+export const getCurrentUser = async (req, res) => {
+  try {
+    // req.user is already set by authMiddleware
+    res.status(200).json({
+      message: "Current user fetched successfully",
+      user: req.user,
+    });
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching current user" });
+  }
+};
